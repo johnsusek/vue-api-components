@@ -1,28 +1,14 @@
 ## Usage
 
-## Getting data
+### Getting data
 
-### On creation
+#### On creation
 
 The simplest invocation will just GET the URL provided when the component is created.
 
 ```vue
 <api url="http://api.example.com/users" />
 ```
-
-### On interaction
-
-This example loads the endpoint only once the button is clicked.
-
-```vue
-<api url="/users">
-  <button slot-scope="api" @click="api.action">
-</api>
-```
-
-
-
-<br>
 
 Add a `@success` handler to access the data that was retrieved.
 
@@ -31,14 +17,34 @@ Add a `@success` handler to access the data that was retrieved.
 Data from API is: {% raw %}{{ users }}{% endraw %}
 ```
 
-<br>
-
 Add an `@error` handler to access the error response.
 
 ```vue
 <api url="http://api.example.com/users" @error="x => response = x" />
 Error from API is: {% raw %}{{ response }}{% endraw %}
 ```
+
+#### On interaction
+
+This example loads the endpoint only once the button is clicked.
+
+```vue
+<api url="http://api.example.com/users">
+  <button slot-scope="api" @click="api.action">
+</api>
+```
+
+### Sending data
+
+To send data to an endpoint, add `method` and `data` props.
+
+```vue
+<api url="https://api.example.com/users/add" method="post" :data="{ username: 'JaneDoe' }">
+  <button slot-scope="api" @click="api.action">Add user</button>
+</api>
+```
+
+### Setting defaults
 
 You don't want to specify the full url for each request, so you can configure VAC first.
 
@@ -47,8 +53,6 @@ You don't want to specify the full url for each request, so you can configure VA
 <api url="/users" />
 ```
 
-<br>
-
 Often API communication will need a token passed in the headers to authenticate.
 
 ```vue
@@ -56,14 +60,39 @@ Often API communication will need a token passed in the headers to authenticate.
 <api url="http://api.example.com/users" />
 ```
 
-<br>
+### Combined example
 
-### Sending data
-
-To send data to an endpoint, add `method` and `data` props.
+This example will send an authenticated API GET request when the user clicks the button. Depending on if the request succeeds, the user will see the list of users or an error.
 
 ```vue
-<api url="/users" method="post" :data="{ username: 'JaneDoe' }">
+<api-config base-url="https://api.example.com" :headers="{ 'X-API-TOKEN': 'mySecretToken' }" />
+
+<api url="/users" @success="x => users = x" @error="x => error = x">
   <button slot-scope="api" @click="api.action">
 </api>
+
+<div v-if="users">>Got users: {% raw %}{{ users }}{% endraw %}</div
+
+<div v-if="error">>Error: {% raw %}{{ error }}{% endraw %}</div
+```
+
+This example will collect a username and send an authenticated POST request to the API when the user clicks the button. Depending on if the request succeeds, the user will see the created user or an error.
+
+```vue
+<api-config base-url="https://api.example.com" :headers="{ 'X-API-TOKEN': 'mySecretToken' }" />
+
+<input v-bind="newUser.username">
+
+<api 
+  url="/users/add" 
+  method="post" 
+  :data="newUser"
+  @success="x => user = x" 
+  @error="x => error = x">
+  <button slot-scope="api" @click="api.action">Add user</button>
+</api>
+
+<div v-if="user">>Created user: {% raw %}{{ user }}{% endraw %}</div
+
+<div v-if="error">>Error: {% raw %}{{ error }}{% endraw %}</div
 ```
