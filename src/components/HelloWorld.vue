@@ -1,58 +1,82 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <api url="/comments" @success="x => comments = x" />
+    <api url="/albums" @success="x => albums = x" />
+    <api url="/photos" @success="x => photos = x" />
+    <api url="/todos" @success="x => todos = x" />
+    <api url="/users" @success="x => users = x" />
+
+    <el-form :model="newUser">
+      <el-form-item label="name" prop="name">
+        <el-input v-model="newUser.name" />
+      </el-form-item>
+      <el-form-item label="email">
+        <el-input v-model="newUser.email" />
+      </el-form-item>
+      <el-form-item label="website">
+        <el-input v-model="newUser.website" />
+      </el-form-item>
+      <el-form-item label="username">
+        <el-input v-model="newUser.username" />
+      </el-form-item>
+      <el-form-item label="phone">
+        <el-input v-model="newUser.phone" />
+      </el-form-item>
+
+      <api url="/users" method="post" :data="newUser">
+        <el-button slot-scope="api" @click="api.action">
+          Add user
+        </el-button>
+      </api>
+    </el-form>
+
+    <api
+      url="/posts"
+      :params="{ userId: selectedUserId }"
+      @start="loading = true"
+      @end="loading = false"
+      @success="x => posts = x">
+      <el-select
+        v-model="selectedUserId"
+        slot-scope="api"
+        placeholder="Select user"
+        filterable
+        @change="api.action">
+        <el-option v-for="user in users" :key="user.id" :value="user.id" :label="user.name" />
+      </el-select>
+    </api>
+
+    <el-table v-loading="loading" :data="posts">
+      <el-table-column label="id" prop="id" width="80" />
+      <el-table-column label="userId" prop="userId" width="80" />
+      <el-table-column label="title" prop="title" />
+      <el-table-column label="body" prop="body" />
+    </el-table>
   </div>
 </template>
 
 <script>
+import Api from '@/components/Api.vue';
+
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String,
+
+  components: {
+    Api
   },
+
+  data() {
+    return {
+      newUser: {},
+      loading: false,
+      posts: null,
+      comments: null,
+      albums: null,
+      photos: null,
+      todos: null,
+      users: null,
+      selectedUserId: null
+    };
+  }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

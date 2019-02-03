@@ -1,4 +1,4 @@
-# vueapi
+# vue-api-components
 
 ## Project setup
 ```
