@@ -68,7 +68,7 @@ This example will send an authenticated API GET request when the user clicks the
 <api-config base-url="https://api.example.com" :headers="{ 'X-API-TOKEN': 'mySecretToken' }" />
 
 <api url="/users" @success="x => users = x" @error="x => error = x">
-  <button slot-scope="api" @click="api.action">
+  <button slot-scope="api" @click="api.action">Get users</button>
 </api>
 
 <div v-if="users">>Got users: {% raw %}{{ users }}{% endraw %}</div

@@ -1,15 +1,19 @@
-## `<api>`
+## Specification
 
-### Props
-| Prop     | Type     | Required | Default | Details                                      |
-| -------- | -------- | -------- | ------- | -------------------------------------------- |
-| `url`    | `String` | `true`   |         | The URL to request                           |
-| `name`   | `String` |          |         | Make request using this named api-config.    |
-| `method` | `String` |          | `GET`   | HTTP method to use for request.              |
-| `data`   | `Object` |          |         | Send this data as JSON in POST body.         |
-| `params` | `Object` |          |         | Send this data as URL params in GET request. |
+### `<api>`
 
-### Events
+#### Props
+| Prop       | Type     | Required | Default | Details                                                                                        |
+| ---------- | -------- | -------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `url`      | `String` | `true`   |         | The URL to request                                                                             |
+| `name`     | `String` |          |         | Make request using this named api-config.                                                      |
+| `method`   | `String` |          | `GET`   | HTTP method to use for request.                                                                |
+| `data`     | `Object` |          |         | Send this data as JSON in POST body.                                                           |
+| `params`   | `Object` |          |         | Send this data as URL params in GET request.                                                   |
+| `filter`   | `String` |          |         | Apply this [JSONata](http://jsonata.org/) expression to the response data before returning it. |
+| `mutation` | `String` |          |         | Commit this vuex mutation with the response data as the payload.                               |
+
+#### Events
 | Event      | Handler arguments | Details                                                                                                                            |
 | ---------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `@start`   |                   | The request has started.                                                                                                           |
@@ -20,10 +24,11 @@
 
 <br>
 
-## `<api-config>`
+### `<api-config>`
 
-| Prop    | Type   | Details                                                         |
-| ------- | ------ | --------------------------------------------------------------- |
+#### Props
+| Prop      | Type     | Details                                                         |
+| --------- | -------- | --------------------------------------------------------------- |
 | `name`    | `String` | Specify a name for this API config. Used with \<api> name prop. |
 | `baseUrl` | `String` | The base url to prepend to all request URLs.                    |
 | `headers` | `Object` | Add these headers to all requests.                              |
