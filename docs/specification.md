@@ -1,18 +1,8 @@
 # Specification
 
-## `<api>`
+## \<api>
 
 ### Props
-| Prop       | Type     | Required | Default | Details                                                                                        |
-| ---------- | -------- | -------- | ------- | ---------------------------------------------------------------------------------------------- |
-|       |  | `true`   |         | The URL to request                                                                             |
-| `name`     | `String` |          |         | Make request using this named api-config.                                                      |
-| `method`   | `String` |          | `GET`   | HTTP method to use for request.                                                                |
-| `data`     | `Object` |          |         | Send this data as JSON in POST body.                                                           |
-| `params`   | `Object` |          |         | Send this data as URL params in GET request.                                                   |
-| `filter`   | `String` |          |         | Apply this [JSONata](http://jsonata.org/) expression to the response data before returning it. |
-| `mutation` | `String` |          |         | Commit this vuex mutation with the response data as the payload.                               |
-
 <table>
   <tr>
     <td>Prop</td>
@@ -24,51 +14,51 @@
   <tr>
     <td><code>url</code></td>
     <td><code>String</code></td>
+    <td align="center">*</td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td>The URL to request.</td>
   </tr>
   <tr>
+    <td><code>name</code></td>
+    <td><code>String</code></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Make request using this named api-config.</td>
   </tr>
   <tr>
+    <td><code>method</code></td>
+    <td><code>String</code></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td><code>GET</code></td>
+    <td>HTTP method to use for request.</td>
   </tr>
   <tr>
+    <td><code>data</code></td>
+    <td><code>Object</code></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Send this data as JSON in POST body.</td>
   </tr>
   <tr>
+    <td><code>params</code></td>
+    <td><code>Object</code></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Send this data as URL params in GET request.</td>
   </tr>
   <tr>
+    <td><code>filter</code></td>
+    <td><code>String</code></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Apply this <a href="http://jsonata.org/">JSONata</a> expression to the response data before returning it.</td>
   </tr>
   <tr>
+    <td><code>mutation</code></td>
+    <td><code>String</code></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Commit this vuex mutation with the response data as the payload.</td>
   </tr>
 </table>
 
@@ -83,7 +73,7 @@
 
 <br>
 
-## `<api-config>`
+## \<api-config>
 
 ### Props
 | Prop      | Type     | Details                                                         |
