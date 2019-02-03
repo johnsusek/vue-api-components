@@ -62,6 +62,7 @@ Often API communication will need a token passed in the headers to authenticate.
 
 ## Combined examples
 
+### Example 1
 This example will send an authenticated API GET request when the user clicks the button. Depending on if the request succeeds, the user will see the list of users or an error.
 
 ```vue
@@ -71,11 +72,12 @@ This example will send an authenticated API GET request when the user clicks the
   <button slot-scope="api" @click="api.action">Get users</button>
 </api>
 
-<div v-if="users">>Got users: {% raw %}{{ users }}{% endraw %}</div
+<div v-if="users">>Got users: {% raw %}{{ users }}{% endraw %}</div>
 
-<div v-if="error">>Error: {% raw %}{{ error }}{% endraw %}</div
+<div v-if="error">>Error: {% raw %}{{ error }}{% endraw %}</div>
 ```
 
+### Example 2
 This example will collect a username and send an authenticated POST request to the API when the user clicks the button. Depending on if the request succeeds, the user will see the created user or an error.
 
 ```vue
