@@ -94,7 +94,7 @@ This example will collect a username and send an authenticated POST request to t
   <button slot-scope="api" @click="api.action">Add user</button>
 </api>
 
-<div v-if="user">>Created user: {% raw %}{{ user }}{% endraw %}</div
+<div v-if="user">>Created user: {% raw %}{{ user }}{% endraw %}</div>
 
-<div v-if="error">>Error: {% raw %}{{ error }}{% endraw %}</div
+<div v-if="error">>Error: {% raw %}{{ error }}{% endraw %}</div>
 ```
