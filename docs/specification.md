@@ -1,8 +1,8 @@
-## Specification
+# Specification
 
-### `<api>`
+## `<api>`
 
-#### Props
+### Props
 | Prop       | Type     | Required | Default | Details                                                                                        |
 | ---------- | -------- | -------- | ------- | ---------------------------------------------------------------------------------------------- |
 |       |  | `true`   |         | The URL to request                                                                             |
@@ -72,7 +72,7 @@
   </tr>
 </table>
 
-#### Events
+### Events
 | Event      | Handler arguments | Details                                                                                                                            |
 | ---------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `@start`   |                   | The request has started.                                                                                                           |
@@ -83,9 +83,9 @@
 
 <br>
 
-### `<api-config>`
+## `<api-config>`
 
-#### Props
+### Props
 | Prop      | Type     | Details                                                         |
 | --------- | -------- | --------------------------------------------------------------- |
 | `name`    | `String` | Specify a name for this API config. Used with \<api> name prop. |
