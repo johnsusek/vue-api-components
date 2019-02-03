@@ -60,7 +60,7 @@ Often API communication will need a token passed in the headers to authenticate.
 <api url="http://api.example.com/users" />
 ```
 
-### Combined example
+### Combined examples
 
 This example will send an authenticated API GET request when the user clicks the button. Depending on if the request succeeds, the user will see the list of users or an error.
 
