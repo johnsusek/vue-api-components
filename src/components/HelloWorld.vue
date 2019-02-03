@@ -6,6 +6,11 @@
     <api url="/todos" @success="x => todos = x" />
     <api url="/users" @success="x => users = x" />
 
+    <!-- <api
+      v-if="users && todos"
+      url="/thirdThing"
+      :params="{ user: users[1].id, todo: todos[3].id }" /> -->
+
     <el-form :model="newUser">
       <el-form-item label="name" prop="name">
         <el-input v-model="newUser.name" />
@@ -67,6 +72,9 @@ export default {
 
   data() {
     return {
+      firstThing: null,
+      secondThing: null,
+      thirdThing: null,
       newUser: {},
       loading: false,
       posts: null,

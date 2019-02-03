@@ -1,6 +1,6 @@
-## Advanced usage
+# Advanced usage
 
-### Sequencing
+## Sequencing
 
 Let's say you have a scenario where need to request data from two endpoints before you can call a third endpoint. Since the last endpoint requires data from the first two, you cannot call it right away. Here is how you would handle that with VAC.
 
@@ -16,7 +16,7 @@ Let's say you have a scenario where need to request data from two endpoints befo
 
 Now, `/thirdEndpoint` won't be called until `todos` and `users` is populated with data.
 
-### Vuex
+## Vuex
 
 Add the propery `mutation` to `<api>` to commit the specified mutation with the response data as the payload.
 

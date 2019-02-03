@@ -1,8 +1,8 @@
-## Usage
+# Usage
 
-### Getting data
+## Getting data
 
-#### On creation
+### On creation
 
 The simplest invocation will just GET the URL provided when the component is created.
 
@@ -24,7 +24,7 @@ Add an `@error` handler to access the error response.
 Error from API is: {% raw %}{{ response }}{% endraw %}
 ```
 
-#### On interaction
+### On interaction
 
 This example loads the endpoint only once the button is clicked.
 
@@ -34,7 +34,7 @@ This example loads the endpoint only once the button is clicked.
 </api>
 ```
 
-### Sending data
+## Sending data
 
 To send data to an endpoint, add `method` and `data` props.
 
@@ -44,7 +44,7 @@ To send data to an endpoint, add `method` and `data` props.
 </api>
 ```
 
-### Setting defaults
+## Setting defaults
 
 You don't want to specify the full url for each request, so you can configure VAC first.
 
@@ -60,7 +60,7 @@ Often API communication will need a token passed in the headers to authenticate.
 <api url="http://api.example.com/users" />
 ```
 
-### Combined examples
+## Combined examples
 
 This example will send an authenticated API GET request when the user clicks the button. Depending on if the request succeeds, the user will see the list of users or an error.
 
